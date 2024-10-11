@@ -1,12 +1,18 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
 function AppBar() {
   return (
     <View style={styles.layer}>
-      <Text style={styles.textColor}>AppBar</Text>
-      <Text style={styles.textColor}>Menu Icon</Text>
+      <Text style={styles.textColor}>
+       <AntDesign name='antdesign' size={50} color='#f59e0b'/>
+      </Text>
+      <Text style={styles.textColor}> 
+        <Entypo name='menu' size={30}/>
+      </Text>
     </View>
   )
 }
