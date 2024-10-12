@@ -5,18 +5,13 @@ import { useNavigation } from '@react-navigation/native'
 const AuthScreen = () => {
 
     const navigation = useNavigation()
-
-    // const handleNavigate = () => {
-    //     navigation.navigate('LOGIN')
-    // }
-
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Login Template</Text>
       <Text style={styles.para}>The Easiest way to start with your amazing Application</Text>
       <TouchableOpacity onPress={() => navigation.navigate('LOGIN')}><Text style={styles.btn}>LOGIN</Text></TouchableOpacity>
       <View style={{height: 1, backgroundColor: '#C3C9CF', width: '100%'}}></View>
-      <TouchableOpacity onPress={() => navigation.navigate('SIGNUP')}><Text style={styles.SignUpBtn}>SIGN UP</Text></TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Sign up')}><Text style={styles.SignUpBtn}>SIGN UP</Text></TouchableOpacity>
     </View>
   )
 }

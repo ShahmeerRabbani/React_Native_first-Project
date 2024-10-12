@@ -21,10 +21,8 @@ const Stack_Navigation = () => {
         
        <Stack.Screen name="AuthScreen" component={AuthScreen}/>
         <Stack.Screen name="LOGIN" component={Login}/>
-        <Stack.Screen name="SIGNUP" component={SignUp}/>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Sign up" component={SignUp}/>
         <Stack.Screen name="Navigation" component={Bottom_Navigation} options={{headerShown: false}}/>
-        <Stack.Screen name="Image Picker" component={ImagePicker}/>
       </Stack.Navigator>
       // <NavigationContainer>
     // {/* <Stack.Navigator>

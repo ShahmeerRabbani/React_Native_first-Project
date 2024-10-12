@@ -1,8 +1,8 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import AppBar from '../Components/Appbar'
-import Card from '../Components/Card'
 import { useNavigation } from '@react-navigation/native'
+import CardComponent from '../Components/Card'
 
 const Product = () => {
 
@@ -40,7 +40,7 @@ const Product = () => {
       {data.map((e, i) => {
         return (
           <View style={styles.wrapper} key={i}>  
-            <Card desc={e.description} title={e.title} image = {e.image} price ={e.price} handleClick={handleClick}/>
+            <CardComponent desc={e.description} title={e.title} image = {e.image} price ={e.price} handleClick={handleClick}/>
           </View>
         )
       })}

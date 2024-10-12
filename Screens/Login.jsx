@@ -1,59 +1,39 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Login = () => {
 
   const navigation = useNavigation()
+   
+  const userData = async () =>{
+    const data =await AsyncStorage.getItem('userCredential')
+    const setData = JSON.parse(data)
 
-  const obj = {
-    name: 'shahmeer',
-    age: 21,
-    email: 'shahmeer@gmail.com',
-  }
-
-  const handle_Store = async() => {
-    await AsyncStorage.setItem('user', 'Data Has been Store')
-  }
-  const handle_GetData = async() => {
-   const data = await AsyncStorage.getItem('user')
-   console.log(data)
-  }
-
-  const handle_Obj = async() => {
-    await AsyncStorage.setItem('userInfo', JSON.stringify(obj))
-  }
-
-  const handle_getObj = async() => {
-    const data = await AsyncStorage.getItem('userInfo')
-    console.log(data)
-   } 
-  const handle_AllData = async() => {
-    const data = await AsyncStorage.getAllKeys()
-    console.log(data)
-   } 
-
-   const handle_home = () => {
-    navigation.navigate('Navigation')
+    console.log(setData)
    }
 
-   const handle_picker = () => {
-    navigation.navigate('Image Picker')
-   }
+  userData()
+
+    const handle_home = () => {
+     navigation.navigate('Navigation')
+    }
+
+   
+
 
 
 
   return (
-    <View style={{gap: 20}}>
-      <Text>Login</Text>
-      <TouchableOpacity onPress={handle_Store} ><Text style={styles.btn}>Store Data</Text></TouchableOpacity>
-      <TouchableOpacity onPress={handle_GetData} ><Text style={[styles.btn, {backgroundColor: 'goldenrod'}]}>Get Data</Text></TouchableOpacity>
-      <TouchableOpacity onPress={handle_Obj} ><Text style={[styles.btn, {backgroundColor: 'seagreen'}]}>set Obj</Text></TouchableOpacity>
-      <TouchableOpacity onPress={handle_getObj} ><Text style={[styles.btn, {backgroundColor: '#3eed9b'}]}>Get Obj</Text></TouchableOpacity>
-      <TouchableOpacity onPress={handle_AllData} ><Text style={[styles.btn, {backgroundColor: '#c073f0'}]}>Get All Obj</Text></TouchableOpacity>
-      <TouchableOpacity onPress={handle_home} ><Text style={[styles.btn, {backgroundColor: '#99f073'}]}>GO to Home</Text></TouchableOpacity>
-      <TouchableOpacity onPress={handle_picker} ><Text style={[styles.btn, {backgroundColor: '#72baa9'}]}>GO to Image Picker</Text></TouchableOpacity>
+    <View style={styles.container}>
+      <Text style={styles.heading}>Welcome Back</Text>
+      <TextInput style={styles.input} placeholder='Email'/>
+      <TextInput style={styles.input} placeholder='Password'/>
+      <Text>Forgot password?</Text>
+      
+      <TouchableOpacity onPress={handle_home} ><Text style={[styles.btn, {backgroundColor: '#99f073'}]}>Login</Text></TouchableOpacity>
+      <Text>Don't have a account? <Text style={{color: '#7dc45e'}} onPress={() => navigation.navigate('Sign up')}>Sign up</Text></Text>
 
     </View>
   )
@@ -62,6 +42,22 @@ const Login = () => {
 export default Login
 
 const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  input:{
+    width: 270,
+    height: 55,
+    backgroundColor: '#fff',
+    borderColor: '#000'
+  },
   btn:{
     width: 200,
     padding: 10,

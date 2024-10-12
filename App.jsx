@@ -1,20 +1,15 @@
-import { NavigationContainer } from "@react-navigation/native";
-
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Stack_Navigation from "./Config/Stack_Navigation";
+import ApiScreen from "./Config/ApiScreen";
+import { PaperProvider } from "react-native-paper";
 
 
 const App = () => {
 
-  const Stack = createNativeStackNavigator()
 
   return(
     <>
-    <NavigationContainer>
-      <Stack_Navigation/>
-    </NavigationContainer>
-    {/* <AuthScreen/> */}
-   {/* <Bottom_Navigation/> */}
+    <PaperProvider>
+    <ApiScreen/>
+    </PaperProvider>
     </>
   )
 }
