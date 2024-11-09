@@ -1,10 +1,12 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import auth from '@react-native-firebase/auth';
+import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 import { BASE_URL } from '../Config/constraints';
+import LinearGradient from 'react-native-linear-gradient';
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('')
@@ -34,26 +36,34 @@ const SignUp = () => {
         }
       }
     }
-    // auth().createUserWithEmailAndPassword(email, password)
-    // .then((res) => {
-    //   console.log(res)
-    //  AsyncStorage.setItem('userCredential', JSON.stringify(userObj))
-    // })
-
 
 
   return (
-    <View style={styles.container}>
-    <Text style={[styles.heading, styles.text_color]}>Create Account</Text>
-    <TextInput onChangeText={e => setFirstName(e)} style={styles.input} placeholder='First name'/>
-    <TextInput onChangeText={e => setLastName(e)} style={styles.input} placeholder='Last name'/>
-    <TextInput onChangeText={e => setEmail(e)} style={styles.input} placeholder='Email'/>
-    <TextInput onChangeText={e => setPassword(e)} secureTextEntry={true} style={styles.input} placeholder='Password'/>
-    
-    <TouchableOpacity onPress={handle_Signup}><Text style={[styles.btn, {backgroundColor: '#99f073'}]}>Sign up</Text></TouchableOpacity>
-    <Text style={styles.text_color}>Already have an account? <Text style={{color: '#7dc45e'}} onPress={() => navigation.navigate('LOGIN')}>Login</Text></Text>
-
+<LinearGradient
+colors={['rgba(2,0,36,1)', 'rgba(47,49,120,1)', 'rgba(0,0,0 ,1)']}
+start={{ x: 0, y: 0 }}
+end={{ x: 0, y: 1 }}
+style={styles.container}>
+  <View style={styles.food_head}>
+    <Text style={{fontSize: 24}}>FOODIE</Text>
+    <Text style={{fontSize: 20, color: '#fff'}}>Deliver Favorite Food</Text>
   </View>
+  <View style={styles.Form}>
+
+  <Text style={styles.heading}>Signup</Text>
+  <TextInput onChangeText={e => setFirstName(e)} style={styles.input} label='first name'/>
+  <TextInput onChangeText={e => setLastName(e)} style={styles.input}  label='last name'/>
+  <TextInput label="Email" onChangeText={e => setEmail(e)} style={styles.input}/>
+  <TextInput  label="Password" onChangeText={e => setPassword(e)} style={styles.input} secureTextEntry
+  right={<TextInput.Icon icon="eye" />} />
+  <TouchableOpacity onPress={handle_Signup} ><Text style={[styles.btn, {backgroundColor: '#223175'}]}>Create Account</Text></TouchableOpacity>
+  </View>
+  <View style={{gap: 10, marginTop: 10, justifyContent: 'center', alignItems: 'center'}}>
+  <Text style={{fontSize: 18}}>Already have a account? </Text>
+  <Text style={{ fontSize: 20}} onPress={() => navigation.navigate('LOGIN')}>login</Text>
+  </View>
+</LinearGradient>
+
   )
 }
 
@@ -64,27 +74,42 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+
+  },
+  food_head:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 5,
+    marginBottom: 20,
+  },
+  Form:{
+    backgroundColor: '#1D102D',
     gap: 20,
+    paddingHorizontal: 25,
+    paddingVertical: 25,
+    justifyContent: 'center',
+    alignItems: 'center'
+
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#fff',
   },
   input:{
     width: 270,
     height: 55,
-    backgroundColor: '#fff',
-    borderColor: '#000',
+    backgroundColor: '#1D102D',
+    borderColor: '#fff',
+    borderWidth: 1,
+    color: '#fff !important',
   },
   btn:{
-    width: 200,
-    padding: 10,
+    width: 250,
+    padding: 15,
     fontWeight: 'bold',
     backgroundColor: 'olive',
     textAlign: 'center',
     borderRadius: 7
 },
-text_color:{
-  color: '#000'
-}
 })
