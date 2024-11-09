@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://j-backend-first-class-vpaf.vercel.app'

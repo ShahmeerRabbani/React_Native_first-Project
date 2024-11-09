@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet} from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer } from '@react-navigation/native'
 import Product from '../Screens/Product'
 import AddToCart from '../Screens/AddToCart'
 import Home from '../Screens/Home'
@@ -14,7 +13,6 @@ const Bottom_Navigation = () => {
     const Tab = createBottomTabNavigator()
 
   return (
-    // <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
         options={{
@@ -49,7 +47,6 @@ const Bottom_Navigation = () => {
         />
         
       </Tab.Navigator>
-    // </NavigationContainer>
   )
 }
 
