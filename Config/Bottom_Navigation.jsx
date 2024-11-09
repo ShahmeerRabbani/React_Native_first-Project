@@ -5,43 +5,63 @@ import Product from '../Screens/Product'
 import AddToCart from '../Screens/AddToCart'
 import Home from '../Screens/Home'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import ImagePicker from '../Screens/ImagePicker'
+import Browse from '../Screens/Browse'
+import Order from '../Screens/Order'
+import Account from '../Screens/Account'
 
 const Bottom_Navigation = () => {
 
     const Tab = createBottomTabNavigator()
 
   return (
-      <Tab.Navigator>
-        <Tab.Screen
-        options={{
-            tabBarIcon: () => {
-                return <MaterialCommunityIcons name = 'tshirt-crew' size={30} color='#f59e0b'/>
-               
-            },
-        }}
-        name = 'Product' component={Product}/>
+      <Tab.Navigator screenOptions={{
+        tabBarStyle: { backgroundColor: '#1D102D'}
+      }}>
       <Tab.Screen
          options={{
-            tabBarIcon: () => {
-                return  <AntDesign name = 'home' size={30} color='#f59e0b'/>
+          headerShown: false,
+           tabBarIcon: () => {
+             return  <Ionicons name = 'home-outline' size={30} color='#B3AAAF'/>
             },
-        }}
+          }}
         name = 'Home' component={Home}/>
+          <Tab.Screen
+          options={{
+            headerShown: false,
+              tabBarIcon: () => {
+                  return <MaterialCommunityIcons name = 'file-find-outline' size={30} color='#B3AAAF'/>
+                 
+              },
+          }}
+          name = 'Browse' component={Browse}/>
         <Tab.Screen
         options={{
+          headerShown: false,
             tabBarIcon: () => {
-                return  <AntDesign name = 'shoppingcart' size={30} color='#f59e0b'/>
+                return  <Ionicons name = 'cart-outline' size={30} color='#B3AAAF'/>
             },
         }}
-        name = 'Add Cart' component={AddToCart}/>
+        name = 'Cart' component={AddToCart}/>
 
         <Tab.Screen
-         name='Image Picker' component={ImagePicker}
+         name='Order' component={Order}
         options={{
+          headerShown: false,
           tabBarIcon: () => {
-            return <AntDesign name='camera' size={30} color='#f59e0b'/>
+            return <AntDesign name='filetext1' size={30} color='#B3AAAF'/>
+          }
+        }}
+        />
+        <Tab.Screen
+         name='Account' component={Account}
+        options={{
+          headerShown: false,
+          tabBarIcon: () => {
+            return <FontAwesome5 name='user' size={30} color='#B3AAAF'/>
           }
         }}
         />

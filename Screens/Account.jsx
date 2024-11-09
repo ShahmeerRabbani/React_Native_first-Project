@@ -2,19 +2,19 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 
-const AddToCart = () => {
+const Account = () => {
   return (
-    <LinearGradient 
+    <LinearGradient
     colors={['rgba(2,0,36,1)', 'rgba(47,49,120,1)', 'rgba(0,0,0 ,1)']}
     start={{ x: 0, y: 0 }}
     end={{ x: 0, y: 1 }}
     style={styles.container}>
-      <Text>Add to cart</Text>
+      <Text>Account</Text>
     </LinearGradient>
   )
 }
 
-export default AddToCart
+export default Account
 
 const styles = StyleSheet.create({
   container:{
