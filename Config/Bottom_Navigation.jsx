@@ -45,7 +45,7 @@ const Bottom_Navigation = () => {
                 return  <Ionicons name = 'cart-outline' size={30} color='#B3AAAF'/>
             },
         }}
-        name = 'Cart' component={AddToCart}/>
+        name = 'Basket' component={AddToCart}/>
 
         <Tab.Screen
          name='Order' component={Order}

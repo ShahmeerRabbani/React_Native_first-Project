@@ -7,6 +7,7 @@ import { BASE_URL } from '../Config/constraints';
 import LinearGradient from 'react-native-linear-gradient';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
 
@@ -32,6 +33,8 @@ const Login = () => {
             return;
           }
           alert(response.data.message)
+          const token = response.data.token
+          const storage = AsyncStorage.setItem('token', token)
           navigation.navigate('Navigation')
         } catch (error) {
           console.log(error);

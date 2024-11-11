@@ -1,5 +1,5 @@
 import { Image, ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -8,10 +8,26 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import PastaImg from '../Assets/pasta.png'
 import Soshi from '../Assets/soshi.png'
 import Soshi2 from '../Assets/soshi2.png'
+import axios from 'axios';
+import { BASE_URL } from '../Config/constraints';
 
 
 const Home = () => {
 
+  const [data, setData] = useState([])
+
+
+  const getFoodData = async() => {
+    await axios.get(`${BASE_URL}/FoodVector`)
+   .then((res)=>{
+     setData(res.data)})
+   .catch((err)=>console.log(err))
+
+   
+ }
+ useEffect(()=>{
+   getFoodData()
+ }, [])
 
   return(
     <LinearGradient 
@@ -53,62 +69,18 @@ const Home = () => {
       </View>
       <View>
       <ScrollView horizontal style={styles.categories}>
-        <View style={styles.sliderParent}>
+        {data.map((e, i)=>{
+          return(
+            <View key={i} style={styles.sliderParent}>
         <View style={styles.slider}>
+          <Image source={{uri: e.img}} style={{height: '100%', width: '100%'}}/>
         </View>
         <Text>
-          Burger
+          {e.name}
         </Text>
         </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
-        <View style={styles.sliderParent}>
-        <View style={styles.slider}>
-        </View>
-        <Text>
-          Burger
-        </Text>
-        </View>
+          )
+        })}
       </ScrollView>
       </View>
       <View >
@@ -239,6 +211,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#171030',
     borderColor: '#B3AAAF',
     borderWidth: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   Order: {
