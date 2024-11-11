@@ -1,4 +1,4 @@
-import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import Noodle2 from '../Assets/noodle2.png'
@@ -9,14 +9,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 const AddToCart = ({route}) => {
   const { id, data } = route.params; 
-  const image = data.img
-  // const [filteredData, setFilteredData] = useState([]);
-
-
-  // useEffect(() => {
-  //   const newData = data?.filter((e) => e.id !== id);
-  //   setFilteredData(newData);
-  // }, [id, data]);
+  const image = data?.img
 
   return (
     <LinearGradient 
@@ -24,7 +17,14 @@ const AddToCart = ({route}) => {
     start={{ x: 0, y: 0 }}
     end={{ x: 0, y: 1 }}
     style={styles.container}>
-       <ImageBackground source={{uri: image}} style={{height: 250, width: '100%'}}>
+      {
+        id == undefined ? (
+         <View><Text>Basket is empty</Text></View>
+        )
+        :
+        (
+          <>
+          <ImageBackground source={{uri: image}} style={{height: 250, width: '100%'}}>
         <View style={styles.header}>
           <View style={styles.iconBox}>
             <Ionicons name='arrow-back' size={22}/>
@@ -43,11 +43,11 @@ const AddToCart = ({route}) => {
     start={{ x: 0, y: 0 }}
     end={{ x: 0, y: 1 }} style={styles.heroDiv}>
         <View style={styles.heroDivOne}>
-          <Text style={{fontSize: 26}}>{data.title}</Text>
-          <Text style={{fontSize: 16}}>{data.Price}</Text>
+          <Text style={{fontSize: 26}}>{data?.title}</Text>
+          <Text style={{fontSize: 16}}>{data?.Price}</Text>
         </View>
         <View style={styles.heroDivTwo}>
-         <Text>{data.desc}</Text>
+         <Text>{data?.desc}</Text>
          <TouchableOpacity style={styles.order_btn}><Text style={{fontSize: 18, fontWeight: 'bold'}}>Order Now</Text></TouchableOpacity>
         </View>
 
@@ -72,6 +72,10 @@ const AddToCart = ({route}) => {
         )
       })} */}
       </ScrollView>
+      </>
+        )
+      }
+       
     </LinearGradient>
   )
 }

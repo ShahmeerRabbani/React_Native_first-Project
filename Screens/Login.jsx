@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FoodieImg from '../Assets/Foodie.png';
 
 const Login = () => {
 
@@ -49,7 +50,9 @@ const Login = () => {
     end={{ x: 0, y: 1 }}
     style={styles.container}>
       <View style={styles.food_head}>
-        <Text style={{fontSize: 24}}>FOODIE</Text>
+      <View style={{height: 90, width: 150}}>
+    <Image source={FoodieImg} style={{height: '100%', width: '100%', resizeMode: 'contain'}}/>
+    </View>
         <Text style={{fontSize: 20, color: '#fff'}}>Deliver Favorite Food</Text>
       </View>
       <View style={styles.Form}>

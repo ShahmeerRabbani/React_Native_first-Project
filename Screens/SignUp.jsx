@@ -1,12 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 import { BASE_URL } from '../Config/constraints';
 import LinearGradient from 'react-native-linear-gradient';
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FoodieImg from '../Assets/Foodie.png';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('')
@@ -45,8 +44,10 @@ start={{ x: 0, y: 0 }}
 end={{ x: 0, y: 1 }}
 style={styles.container}>
   <View style={styles.food_head}>
-    <Text style={{fontSize: 24}}>FOODIE</Text>
-    <Text style={{fontSize: 20, color: '#fff'}}>Deliver Favorite Food</Text>
+    <View style={{height: 90, width: 150}}>
+    <Image source={FoodieImg} style={{height: '100%', width: '100%', resizeMode: 'contain'}}/>
+    </View>
+    <Text style={{fontSize: 18, color: '#fff'}}>Deliver Favorite Food</Text>
   </View>
   <View style={styles.Form}>
 
